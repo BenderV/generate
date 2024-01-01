@@ -1,0 +1,19 @@
+name: universal-data-generator
+root: .
+
+windows:
+    - app:
+          layout: even-horizontal
+          panes:
+              - view:
+                    - cd view
+                    - yarn
+                    - yarn dev
+              - back:
+                    - source ./.env.sh
+                    - cd service
+                    - pyenv activate generator
+                    - pip install -r requirements.txt
+                    - flask --app app run
+    - git:
+          - git status
